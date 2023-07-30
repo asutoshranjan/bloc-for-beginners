@@ -68,7 +68,7 @@ class _HomePageState extends State<HomePage> {
               body: ListView.builder(
                 itemCount: (state as HomeLoadedSuccessState).products.length,
                 itemBuilder: (context, index) {
-                  return ProductCard(product: state.products[index]);
+                  return ProductCard(product: state.products[index], homeBloc: homeBloc,);
                 },
               ),
             );

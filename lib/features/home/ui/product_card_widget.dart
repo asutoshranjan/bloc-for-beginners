@@ -1,10 +1,12 @@
+import 'package:bloc_shop_app/features/home/bloc/home_bloc.dart';
 import 'package:flutter/material.dart';
 
 import '../models/home_product_data_model.dart';
 
 class ProductCard extends StatelessWidget {
   final ProductDataModel product;
-  const ProductCard({super.key, required this.product});
+  final HomeBloc homeBloc;
+  const ProductCard({super.key, required this.product, required this.homeBloc});
 
   @override
   Widget build(BuildContext context) {
@@ -40,9 +42,15 @@ class ProductCard extends StatelessWidget {
             children: [
               Text("Price \$${product.price.toString()}", style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: Colors.green),),
               const Spacer(),
-              IconButton(onPressed: (){}, icon: const Icon(Icons.favorite_border)),
               IconButton(
-                onPressed: () {},
+                onPressed: (){
+                  homeBloc.add(HomeProductWishListButtonClickedEvent());
+                }, 
+                icon: const Icon(Icons.favorite_border)),
+              IconButton(
+                onPressed: () {
+                  homeBloc.add(HomeProductCartButtonClickedEvent());
+                },
                 icon: const Icon(Icons.shopping_cart_outlined),
               ),
             ],

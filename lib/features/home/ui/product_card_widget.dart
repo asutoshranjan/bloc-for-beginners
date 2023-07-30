@@ -23,6 +23,7 @@ class ProductCard extends StatelessWidget {
         ],
       ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
             height: 200,
@@ -35,6 +36,17 @@ class ProductCard extends StatelessWidget {
           ),
           Text(product.name, style: const TextStyle(fontSize: 20),),
           Text(product.description, style: const TextStyle(fontSize: 16),),
+          Row(
+            children: [
+              Text("Price \$${product.price.toString()}", style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: Colors.green),),
+              const Spacer(),
+              IconButton(onPressed: (){}, icon: const Icon(Icons.favorite_border)),
+              IconButton(
+                onPressed: () {},
+                icon: const Icon(Icons.shopping_cart_outlined),
+              ),
+            ],
+          ),
         ],
       ),
     );

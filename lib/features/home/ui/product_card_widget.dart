@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:bloc_shop_app/data/cart_items.dart';
 import 'package:bloc_shop_app/features/home/bloc/home_bloc.dart';
 import 'package:flutter/material.dart';
 
@@ -6,7 +9,7 @@ import '../models/home_product_data_model.dart';
 class ProductCard extends StatelessWidget {
   final ProductDataModel product;
   final HomeBloc homeBloc;
-  const ProductCard({super.key, required this.product, required this.homeBloc});
+  const ProductCard({super.key, required this.product, required this.homeBloc, });
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +54,7 @@ class ProductCard extends StatelessWidget {
                 onPressed: () {
                   homeBloc.add(HomeProductCartButtonClickedEvent(clickedProduct: product));
                 },
-                icon: const Icon(Icons.shopping_cart_outlined),
+                icon: const Icon(Icons.shopping_cart) ,
               ),
             ],
           ),

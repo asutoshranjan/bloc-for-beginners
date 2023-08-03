@@ -1,9 +1,12 @@
+import 'dart:developer';
+
 import 'package:bloc_shop_app/features/cart/ui/cart_page.dart';
 import 'package:bloc_shop_app/features/home/ui/product_card_widget.dart';
 import 'package:bloc_shop_app/features/wishlist/ui/wishlist_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../data/cart_items.dart';
 import '../bloc/home_bloc.dart';
 
 class HomePage extends StatefulWidget {
@@ -36,6 +39,10 @@ class _HomePageState extends State<HomePage> {
           Navigator.push(context, MaterialPageRoute(builder: (context) => const WishlistPage()));
         } else if (state is HomeNavigateToCartPageActionState) {
           Navigator.push(context, MaterialPageRoute(builder: (context) => const CartPage()));
+        } else if (state is HomeProductItemWishListedActionState) {
+          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Product added to wishlist!"),));
+        } else if (state is HomeProductItemCartAddedActionState) {
+          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Product added to cart!"),));
         }
       },
       builder: (context, state) {
